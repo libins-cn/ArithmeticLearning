@@ -12,14 +12,12 @@
 '''
 
 # 从最右边开始往前数，遇到第一个不是空格的地方再开始计数，直到再遇到空格
-# 需要注意边界值
+# 需要注意边界值全为null的情况
 def length_of_last_word(s) -> int:
         ret = 0
         id = len(s) - 1
         while  id >= 0 and s[id] == ' ':
             id -= 1
-        if id < 0:
-            return ret
         while id >= 0:
             if s[id] == ' ':
                 break

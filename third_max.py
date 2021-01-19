@@ -2,43 +2,37 @@
 '''
 # -------------------------------------------------
 # FileName: 		third_max.py
-# CreateDate: 		2020-07-15 23:12:05
+# CreateDate: 		2021-01-13 19:51:35
 # Author: 			libins
-# Contact:			libins.cn@gmail.com
-# LastModified: 	2020-07-15 23:12:05
+# Contact:			shenlibin@58.com
+# LastModified: 	2021-01-13 19:51:36
 # SoftWare:			Visual Studio Code
-# Description: 		LeetCode：第三大的数	
+# Description: 		leetcode第414题：第三大的数	
 # -------------------------------------------------
 '''
-# 维护一个三个元素的小顶堆
-# 每来一个元素判断，跟堆顶的值比较，如果比堆顶小，直接忽略，如果比堆顶大， 则将数据插入到，再进行堆化
-
 
 def third_max(nums):
-
-    def get_max(arr, ignore_value):
-        hashs = {}
-        max_value = 0
+    # 先获取一个有序数组
+    arr = [nums[0]]
+    i = 1
+    while i < len(nums):
+        print(i)
         for a in arr:
-            if a == ignore_value:
-                continue
-            hashs[a] = 1
-            if a > max_value:
-                max_value = a
-
-        dist_arr = []
-        for key in hashs.keys():
-            dist_arr.append(key)
-        return dist_arr, max_value
+            if a == nums[i]: 
+                break 
+            else:
+                arr.append(nums[i])
+        
+        if len(arr) >= 3:
+            break  
+    return arr 
     
-    max_value = None 
-    for i in range(3):
-        nums,max_value = get_max(nums, max_value)
-        if len(nums) < 3:
-            return max_value
-    
-    return max_value
+    # 建堆
 
-nums = [2, 2, 3, 1]
-ret = third_max(nums)
+    # 堆化
+
+arr = [1,1,1,1,3,2,1,1,1,3]
+ret = third_max(arr)
 print(ret)
+
+
